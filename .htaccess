@@ -1,0 +1,60 @@
+# charset
+AddDefaultCharset UTF-8
+
+# add www
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^morugin.ru
+RewriteRule (.*) http://www.morugin.ru/$1 [R=301,L]
+
+# add trailing slash
+RewriteCond %{REQUEST_URI} !\.
+RewriteRule ^(.+[^/])$ http://%{SERVER_NAME}/$1/ [L,R,QSA]
+
+# files compression
+AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/css text/javascript application/javascript application/x-javascript
+
+# ten minutes cache for pages
+<FilesMatch ".(html|htm)$">
+	Header set Cache-Control "max-age=600"
+</FilesMatch>
+
+# one week cache for css and js
+<FilesMatch ".(css|js|txt)$">
+	Header set Cache-Control "max-age=604800"
+</FilesMatch>
+
+# two weeks cache for image files
+<FilesMatch ".(jpg|jpeg|png|gif|ico)$">
+	Header set Cache-Control "max-age=1209600"
+</FilesMatch>
+
+# http only for cookies
+<IfModule php5_module>
+	php_value session.cookie_httponly true
+</IfModule>
+
+# Error pages
+# Bad Request
+ErrorDocument 400 /404.html
+# Authorization Required
+ErrorDocument 401 /404.html
+# Forbidden
+ErrorDocument 403 /404.html
+# Not found
+ErrorDocument 404 /404.html
+# Method Not Allowed
+ErrorDocument 405 /404.html
+# Request Timed Out
+ErrorDocument 408 /404.html
+# Request URI Too Long
+ErrorDocument 414 /404.html
+# Internal Server Error
+ErrorDocument 500 /500.html
+# Not Implemented
+ErrorDocument 501 /500.html
+# Bad Gateway 
+ErrorDocument 502 /500.html
+# Service Unavailable 
+ErrorDocument 503 /500.html
+# Gateway Timeout
+ErrorDocument 504 /500.html
