@@ -3,8 +3,8 @@ AddDefaultCharset UTF-8
 
 # add www
 RewriteEngine On
-RewriteCond %{HTTP_HOST} ^morugin.ru
-RewriteRule (.*) http://www.morugin.ru/$1 [R=301,L]
+# RewriteCond %{HTTP_HOST} ^morugin.ru
+# RewriteRule (.*) http://www.morugin.ru/$1 [R=301,L]
 
 # add trailing slash
 RewriteCond %{REQUEST_URI} !\.
