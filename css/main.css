@@ -104,3 +104,4 @@ body {width: 90%; margin:0 auto;} /* Center page without wrapper */
 
 .content {max-width:800px;}
 .disabled {color:#adaba7;}
+.new {text-transform:uppercase; font-size:60%; letter-spacing:.05rem; margin-left:5px; padding:0px 1px 0px 2px; background-color:#2aad05; color:#fff;}
